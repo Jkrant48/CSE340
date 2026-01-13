@@ -3,4 +3,249 @@
 *:before,
 *:after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#wrapper {
+  background-color: var(--primary-color);
+}
+
+/******* variables ***************/
+:root {
+  --primary-color: #fbfbfb;
+  --secondary-color: #160c28;
+  --accent-color: #07599d;
+  --secondary-accent-color: rgba(255, 255, 255, 0.855);
+
+  /* Primary fonts */
+  --heading-font: "Roboto", Arial, sans-serif;
+  --body-font: "DM Sans", Arial, sans-serif;
+
+  /* Accent & special use */
+  --serif-font: "Lora", Georgia, serif;
+  --classic-font: "Tinos", "Times New Roman", serif;
+
+  /* Optional UI-specific fonts */
+  --nav-font: "DM Sans", Arial, sans-serif;
+  --button-font: "Roboto", Arial, sans-serif;
+}
+
+/****** header and nav styles **********/
+#top-header {
+  background-color: var(--primary-color);
+  color: var(--primary-color);
+  font-family: var(--nav-font);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.siteName a {
+  font-size: 2em;
+  color: var(--secondary-color);
+  font-family: var(--heading-font);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#tools a {
+  text-decoration: none;
+  color: var(--secondary-color);
+  font-size: 1em;
+}
+
+nav {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  font-family: var(--nav-font);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+/****** hero section styles **********/
+#hero-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  position: relative;
+}
+
+#hero-container h1 {
+  font-size: 2.5em;
+  font-family: var(--heading-font);
+  color: var(--secondary-color);
+  padding: 20px;
+  grid-column: 1 / span 2;
+}
+
+.hero-img {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+}
+
+.hero-img img {
+  width: 100%;
+  height: auto;
+}
+
+#hero-container section {
+  position: absolute;
+  top: 30%;
+  left: 5%;
+  z-index: 2;
+  display: inline-block;
+  width: fit-content;
+  height: fit-content;
+  background-color: var(--secondary-accent-color);
+  padding: 40px;
+  margin: 10px;
+  border-radius: 10px;
+  color: var(--accent-color);
+}
+
+#hero-container section h2 {
+  font-size: 2em;
+  font-family: var(--classic-font);
+}
+
+#hero-container section p {
+  font-size: 1.5em;
+  font-family: var(--serif-font);
+  font-weight: 500;
+}
+
+.hero-btn {
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-top: 10px;
+}
+
+.hero-btn a {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-family: var(--nav-font);
+  font-size: 1.2em;
+}
+
+/****** upgrades section styles **********/
+#upgrades {
+  padding: 10px;
+}
+
+.upgrades-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+}
+#upgrades h3 {
+  grid-column: 1 / span 2;
+  font-family: var(--heading-font);
+  color: var(--secondary-color);
+  padding: 20px;
+  font-size: 1.5em;
+}
+
+.upgrade-item {
+  display: inline-block;
+  text-align: center;
+  margin: 20px;
+}
+
+.upgrade-item:nth-child(1) {
+  grid-area: 1 / 1;
+}
+.upgrade-item:nth-child(2) {
+  grid-area: 1 / 2;
+}
+.upgrade-item:nth-child(3) {
+  grid-area: 2 / 1;
+}
+.upgrade-item:nth-child(4) {
+  grid-area: 2 / 2;
+}
+
+.upgrade-item a {
+  text-decoration: underline;
+  font-family: var(--body-font);
+  color: var(--accent-color);
+  font-size: 1.2em;
+  display: block;
+  margin-top: 10px;
+}
+
+.upgrade-item img {
+  width: 70%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.upgrade-item div {
+  padding: 10px;
+  width: 100%;
+  background-color: var(--accent-color);
+}
+
+/****** reviews styles **********/
+
+#reviews {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+#reviews h3 {
+  grid-row: 1 / 2;
+  padding: 20px;
+  font-family: var(--heading-font);
+  color: var(--secondary-color);
+  font-size: 1.5em;
+}
+
+.review-items ul li {
+  font-family: var(--body-font);
+  color: var(--secondary-color);
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.review-items ul {
+  padding: 20px;
+}
+/****** footer styles **********/
+footer {
+  color: var(--secondary-color);
+  padding: 20px;
+  font-family: var(--nav-font);
+  font-size: 1em;
+}
+
+@media (min-width: 550px) {
+  body {
+    background-image: url(/images/site/checkerboard.jpg);
+  }
+
+  #wrapper {
+    width: 70%;
+    margin: 0 auto;
+    border: 5px solid var(--accent-color);
+    border-radius: 20px;
+  }
+
+  #bottom-section {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+  }
 }
