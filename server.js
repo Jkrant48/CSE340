@@ -10,6 +10,9 @@ const env = require("dotenv").config();
 const app = express();
 const static = require("./routes/static");
 const expressLayouts = require("express-ejs-layouts");
+const baseController = require("./controllers/baseController");
+const inventoryRoute = require("./routes/inventoryRoute");
+const utitilies = require("./utilities/");
 
 /* ***********************
  * View Engine and Templates
@@ -25,8 +28,32 @@ app.set("layout", "./layouts/layout"); // not at views root
 app.use(static);
 
 //Index route
-app.get("/", function (req, res) {
-  res.render("index", { title: "Home" });
+app.get("/", utitilies.handleErrors(baseController.buildHome));
+//inventory route
+app.use("/inv", inventoryRoute);
+
+//File Not Found Route - must be last route
+app.use(async (req, res, next) => {
+  next({ status: 404, message: `Sorry, it seems we have lost this page.` });
+});
+
+/* ***********************
+ * Express Error Handler
+ * Place after all middleware
+ *************************/
+app.use(async (err, req, res, next) => {
+  let nav = await utitilies.getNav();
+  console.error(`Error at: ${req.originalUrl}: ${err.message}`);
+  if (err.status == 404) {
+    message = err.message;
+  } else {
+    message = "Are you really supposed to be here? Try a different page!";
+  }
+  res.render("errors/error", {
+    title: err.status || "Server Error",
+    message: message,
+    nav,
+  });
 });
 
 /* ***********************
