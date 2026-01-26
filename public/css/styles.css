@@ -328,6 +328,18 @@ nav ul li a {
   margin-right: 10px;
 }
 
+/******************************
+* Error view
+*******************************/
+.error-message {
+  padding: 20px;
+
+  font-family: var(--body-font);
+  font-size: 1.5em;
+  color: var(--secondary-color);
+  text-align: center;
+}
+
 /*********************************
  * FOOTER
  *********************************/

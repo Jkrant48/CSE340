@@ -12,7 +12,8 @@ const static = require("./routes/static");
 const expressLayouts = require("express-ejs-layouts");
 const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
-const utitilies = require("./utilities/");
+const utilities = require("./utilities/");
+const errorRoute = require("./routes/error");
 
 /* ***********************
  * View Engine and Templates
@@ -28,9 +29,11 @@ app.set("layout", "./layouts/layout"); // not at views root
 app.use(static);
 
 //Index route
-app.get("/", utitilies.handleErrors(baseController.buildHome));
+app.get("/", utilities.handleErrors(baseController.buildHome));
 //inventory route
-app.use("/inv", inventoryRoute);
+app.use("/inv", utilities.handleErrors(inventoryRoute));
+//error route
+app.use("/", errorRoute);
 
 //File Not Found Route - must be last route
 app.use(async (req, res, next) => {
@@ -42,12 +45,14 @@ app.use(async (req, res, next) => {
  * Place after all middleware
  *************************/
 app.use(async (err, req, res, next) => {
-  let nav = await utitilies.getNav();
+  let nav = await utilities.getNav();
   console.error(`Error at: ${req.originalUrl}: ${err.message}`);
   if (err.status == 404) {
     message = err.message;
   } else {
-    message = "Are you really supposed to be here? Try a different page!";
+    message =
+      err.message ||
+      "Are you really supposed to be here? Try a different page!";
   }
   res.render("errors/error", {
     title: err.status || "Server Error",
