@@ -142,14 +142,11 @@ nav ul li a {
 }
 
 .hero-btn {
+  display: inline-block;
   background-color: var(--accent-color);
-  border: none;
   border-radius: 5px;
   padding: 10px 20px;
   margin-top: 10px;
-}
-
-.hero-btn a {
   font-family: var(--nav-font);
   font-size: 1.2em;
   color: var(--primary-color);
