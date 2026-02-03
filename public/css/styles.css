@@ -412,6 +412,39 @@ nav ul li a {
   margin-bottom: 10px;
 }
 
+/***********************
+Management View
+***********************/
+
+.m-list {
+  margin-top: 40px;
+  text-align: center;
+  list-style: none;
+  font-size: 1.5em;
+}
+
+.m-list li {
+  margin-bottom: 10px;
+}
+
+.m-list a {
+  margin-bottom: 30px;
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+/*******************
+* classification-list
+*******************/
+#classificationList {
+  font-size: 1.5em;
+  padding: 10px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 /*********************************
  * FOOTER
  *********************************/
